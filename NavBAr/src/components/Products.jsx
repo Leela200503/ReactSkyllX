@@ -13,6 +13,7 @@ return (
         {metadata.map((item)=>(
             <div key={item.id} className='flex  bg-gray-100 border shadow-slate-600 rounded-lg p-4 mb-4'>
                 <div><img src={item.thumbnail} alt={item.title} className='w-40 h-40 rounded-lg mb-2' />
+                <p className='text-lg font-semibold mb-2' search={item.title}>{item.title}</p>
                 <p className='text-xl font-bold mb-2'>{item.price}</p>
                 <p> rating: {item.rating}</p>
                 </div>
