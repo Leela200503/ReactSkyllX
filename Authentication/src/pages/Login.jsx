@@ -1,28 +1,90 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const [value, setValue]=useState({
-        email:"",
-        password:""
-    });
-    const HandleLogin=(e)=>{
-        e.preventDefault();
-        console.log(value)
+  const navigate = useNavigate();
 
+  const [value, setValue] = useState({
+    username: "",
+    password: "",
+  });
+
+  const HandleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("https://dummyjson.com/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: value.username,
+          password: value.password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("token", data.accessToken);
+        localStorage.setItem("username", data.username);
+
+        alert("Login Successful");
+        navigate("/");
+      } else {
+        alert(data.message || "Invalid Credentials");
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong");
     }
-  return (
-    <div className='m-auto'>
-        <form onSubmit={HandleLogin} className='flex flex-col gap-5 m-auto '>
-            <input className='border  p-1 rounded-lg w-[300px]' type="email" placeholder='Email' 
-            onClick={(e)=>setValue({...value,email:e.target.value})}
-            />
-            <input className='border  p-1 rounded-lg w-[300px]' type='password' placeholder='Password'/>
-            <button className='bg-blue-300 w-[300px] text-white rounded-lg w-[300px]' >Login</button>
-            <p>U dont hava an Account <Link className='text-pink-300 hover:text-red-500'  to={"/Signup"}>Singup</Link> here</p>
-        </form>
-    </div>
-  )
-}
+  };
 
-export default Login
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <form
+        onSubmit={HandleLogin}
+        className="flex flex-col gap-4 border p-6 rounded-lg shadow-lg"
+      >
+        <h2 className="text-2xl font-bold text-center">Login</h2>
+
+        <input
+          type="text"
+          placeholder="Username"
+          className="border p-2 rounded"
+          value={value.username}
+          onChange={(e) =>
+            setValue({ ...value, username: e.target.value })
+          }
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          className="border p-2 rounded"
+          value={value.password}
+          onChange={(e) =>
+            setValue({ ...value, password: e.target.value })
+          }
+        />
+
+        <button
+          type="submit"
+          className="bg-blue-600 text-white p-2 rounded"
+        >
+          Login
+        </button>
+
+        <p>
+          Don't have an account?{" "}
+          <Link to="/signup" className="text-pink-600">
+            Signup
+          </Link>
+        </p>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
