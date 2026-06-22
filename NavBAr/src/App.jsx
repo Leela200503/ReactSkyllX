@@ -6,6 +6,7 @@ import Page from './components/Page'
 import ReactLifeCycle from './components/ReactLifeCycle'
 import './index.css'
 import Products from './components/Products'
+import WorkingUseCallback from './components/WorkingUseCallback'
 import CriketUnmunt from './components/CriketUnmunt'
 import SoccerUnmunt from './components/SoccerUnmunt'
 function App() {
@@ -39,7 +40,7 @@ function App() {
     {/* <Products metadata={data} setData={setData}/> */}
    
 {/* <ReactLifeCycle/> */}
-   
+  <WorkingUseCallback/>
 {activeGame === 'cricket' ? <CriketUnmunt/> :<SoccerUnmunt/>}
    <div className='flex gap-4 mt-4'>
     <button className='bg-black text-white p-2 rounded-lg' onClick={() => setActiveGame('cricket')}>Cricket</button>
