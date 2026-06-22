@@ -39,70 +39,127 @@ const Signup = () => {
     }
   };
 
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <form
-        onSubmit={SignupHandler}
-        className="flex flex-col gap-4 border p-6 rounded-lg shadow-lg"
-      >
-        <h2 className="text-2xl font-bold text-center">Signup</h2>
+ return (
+  <div
+    className="min-h-screen bg-cover bg-center flex items-center justify-center relative"
+    style={{
+      backgroundImage:
+        "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600')",
+    }}
+  >
+    {/* Overlay */}
+    {/* <div className="absolute inset-0 bg-black/50"></div> */}
 
+    {/* Signup Form */}
+    <form
+      onSubmit={SignupHandler}
+      className="relative z-10 w-[420px] rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-xl shadow-2xl"
+    >
+      <h2 className="mb-2 text-center text-4xl font-bold text-white">
+        Create Account
+      </h2>
+
+      <p className="mb-8 text-center text-gray-200">
+        Join us and get started today
+      </p>
+
+      {/* First Name */}
+      <div className="mb-4">
+        <label className="mb-2 block text-white font-medium">
+          First Name
+        </label>
         <input
           type="text"
-          placeholder="First Name"
-          className="border p-2 rounded"
+          placeholder="Enter your name"
+          className="w-full rounded-xl border border-white/30 bg-white/20 p-3 text-white placeholder:text-gray-300 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400"
           value={signupVal.firstName}
           onChange={(e) =>
-            setSignupVal({ ...signupVal, firstName: e.target.value })
+            setSignupVal({
+              ...signupVal,
+              firstName: e.target.value,
+            })
           }
         />
+      </div>
 
+      {/* Email */}
+      <div className="mb-4">
+        <label className="mb-2 block text-white font-medium">
+          Email
+        </label>
         <input
           type="email"
-          placeholder="Email"
-          className="border p-2 rounded"
+          placeholder="Enter your email"
+          className="w-full rounded-xl border border-white/30 bg-white/20 p-3 text-white placeholder:text-gray-300 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400"
           value={signupVal.email}
           onChange={(e) =>
-            setSignupVal({ ...signupVal, email: e.target.value })
+            setSignupVal({
+              ...signupVal,
+              email: e.target.value,
+            })
           }
         />
+      </div>
 
+      {/* Password */}
+      <div className="mb-4">
+        <label className="mb-2 block text-white font-medium">
+          Password
+        </label>
         <input
           type="password"
-          placeholder="Password"
-          className="border p-2 rounded"
+          placeholder="Create a password"
+          className="w-full rounded-xl border border-white/30 bg-white/20 p-3 text-white placeholder:text-gray-300 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400"
           value={signupVal.password}
           onChange={(e) =>
-            setSignupVal({ ...signupVal, password: e.target.value })
+            setSignupVal({
+              ...signupVal,
+              password: e.target.value,
+            })
           }
         />
+      </div>
 
+      {/* Phone */}
+      <div className="mb-6">
+        <label className="mb-2 block text-white font-medium">
+          Phone Number
+        </label>
         <input
           type="tel"
-          placeholder="Phone Number"
-          className="border p-2 rounded"
+          placeholder="Enter phone number"
+          className="w-full rounded-xl border border-white/30 bg-white/20 p-3 text-white placeholder:text-gray-300 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400"
           value={signupVal.phone}
           onChange={(e) =>
-            setSignupVal({ ...signupVal, phone: e.target.value })
+            setSignupVal({
+              ...signupVal,
+              phone: e.target.value,
+            })
           }
         />
+      </div>
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white p-2 rounded"
+      {/* Signup Button */}
+      <button
+        type="submit"
+        className="w-full rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+      >
+        Create Account
+      </button>
+
+      {/* Login Link */}
+      <p className="mt-6 text-center text-gray-200">
+        Already have an account?{" "}
+        <Link
+          to="/login"
+          className="font-semibold text-yellow-300 hover:text-yellow-400"
         >
-          Signup
-        </button>
-
-        <p>
-          Already have an account?{" "}
-          <Link to="/login" className="text-pink-600">
-            Login
-          </Link>
-        </p>
-      </form>
-    </div>
-  );
+          Login
+        </Link>
+      </p>
+    </form>
+  </div>
+);
 };
 
 export default Signup;
