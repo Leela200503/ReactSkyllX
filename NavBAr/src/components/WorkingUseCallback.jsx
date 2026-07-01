@@ -14,7 +14,7 @@ const WorkingUseCallback = () => {
       <button onClick={() => setCount(prev => prev + 1)}>Increment</button>
       <button onClick={practice}>useCallback</button>
     </div>
-  );
+  );  
 };
 
 export default WorkingUseCallback;

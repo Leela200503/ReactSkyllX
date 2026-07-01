@@ -6,6 +6,9 @@ import './App.css'
 import mydata from './data/Myproducts.js'
 import Card from './components/Card.jsx'
 import './index.css'
+import Boyspg from './pages/BGCPG/Boyspg.jsx'
+import Girlspg from './pages/BGCPG/Girlspg.jsx'
+import Colivingpg from './pages/BGCPG/Colivingpg.jsx'
 import Nav from './components/Nav.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -36,12 +39,15 @@ function App() {
       </div> */}
     
     <ReactRouter className='text-xl text-center text-white'>
-      <Nav />
+    <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/products' element={<Products />} />
+        <Route path='/boys-pgs' element={<Boyspg />} />
+        <Route path='/girls-pgs' element={<Girlspg />} />
+        <Route path='/co-living' element={<Colivingpg />} />
       </Routes>
     </ReactRouter>
 
